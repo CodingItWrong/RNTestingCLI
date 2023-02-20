@@ -3,8 +3,8 @@ import {render, screen} from '@testing-library/react-native';
 import Hello from './Hello';
 
 describe('Hello', () => {
-  it('renders the correct message', () => {
-    render(<Hello />);
-    expect(screen.getByText('Hello, world!')).toBeVisible();
+  it('displays the passed-in name', () => {
+    render(<Hello name="Josh" />);
+    expect(screen.getByText('Hello, Josh!')).toBeVisible();
   });
 });
