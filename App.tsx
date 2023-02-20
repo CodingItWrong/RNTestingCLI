@@ -72,6 +72,7 @@ function App(): JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <Text testID="hello">Hello, Detox!</Text>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
