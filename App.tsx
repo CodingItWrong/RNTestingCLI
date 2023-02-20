@@ -5,14 +5,16 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Pressable,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
@@ -62,6 +64,9 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [isPressed, setIsPressed] = useState(false);
+  const [text, setText] = useState('');
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -73,6 +78,11 @@ function App(): JSX.Element {
         style={backgroundStyle}>
         <Header />
         <Text testID="hello">Hello, Detox!</Text>
+        <Pressable testID="mybutton" onPress={() => setIsPressed(true)}>
+          <Text>Press Me</Text>
+        </Pressable>
+        <TextInput testID="mytextinput" value={text} onChangeText={setText} />
+        {isPressed && <Text testID="pressedMessage">Pressed!</Text>}
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
